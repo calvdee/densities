@@ -20,4 +20,8 @@ describe('Controller: MainCtrl', function () {
   it('should attach a list of distributions to the scope', function () {
     expect(scope.dists.length).toBeGreaterThan(0);
   });
+
+  it('should create a gamma distribution model with alpha and beta parameters', function() {
+    expect(scope.newDistribution())
+  });
 });
