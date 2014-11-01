@@ -15,7 +15,9 @@ angular.module('densitiesApp')
     //   'Karma'
     // ];
 
-    $scope.densities = [
+    $scope.dists = [
     	{ name: "Gamma" }
     ];
+
+    $scope.dist = {}
   });
