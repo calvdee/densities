@@ -6,8 +6,7 @@ describe('Service: DistFactory', function () {
   beforeEach(module('densitiesApp'));
 
   // http://nathanleclaire.com/blog/2013/12/13/how-to-unit-test-controllers-in-angularjs-without-setting-your-hair-on-fire/
-  var scope,
-      DistFactory
+  var DistFactory
       ,_;
 
   

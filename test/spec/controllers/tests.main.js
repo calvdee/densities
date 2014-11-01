@@ -9,14 +9,15 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _DistFactory_) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+      $scope: scope,
+      DistFactory: _DistFactory_
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of densities to the scope', function () {
+    expect(scope.densities.length).toBeGreaterThan(0);
   });
 });
