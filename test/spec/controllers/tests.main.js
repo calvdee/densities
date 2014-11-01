@@ -21,7 +21,9 @@ describe('Controller: MainCtrl', function () {
     expect(scope.dists.length).toBeGreaterThan(0);
   });
 
-  it('should create a gamma distribution model with alpha and beta parameters', function() {
-    expect(scope.newDistribution())
+  it('should create a new distribution model with default parameters', function() {
+    scope.dists.forEach(function (d) {
+      expect(scope.newDistribution(d).paramValues.length).toBeGreaterThan(0);
+    });
   });
 });

@@ -16,14 +16,14 @@ angular.module('densitiesApp')
     // ];
 
     $scope.dists = [
-    	{ name: 'Gamma', params: ['alpha', 'beta'] }
+    	{ name: 'Gamma', params: ['alpha', 'beta'], defaults: [1, 2] }
     ];
     $scope.dist = {}
     $scope.models = [];
 
     $scope.newDistribution = function(dist) {
         return {
-       
+            paramValues: dist.defaults
         };
     }
   });
