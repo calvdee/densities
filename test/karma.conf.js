@@ -28,6 +28,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/underscore/underscore.js"',
       'bower_components/angular-underscore-module/angular-underscore-module.js',
+      'bower_components/angular-underscore/angular-underscore-module.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'

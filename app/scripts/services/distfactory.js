@@ -22,7 +22,12 @@ angular.module('densitiesApp')
 	}
 
 	function dgamma(xs, a, b) { 
-		return _.map(xs, function(x) { return Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a); });
+		var densities = [];
+		xs.forEach(function(x) {
+			return Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a);
+		});
+		return densities;
+		// return _.map(xs, function(x) { return Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a); });
 	}
 
   });
