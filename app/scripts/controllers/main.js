@@ -15,15 +15,9 @@ angular.module('densitiesApp')
     //   'Karma'
     // ];
 
-    $scope.dists = [
+    $scope.densities = [
     	{ name: 'Gamma', params: ['alpha', 'beta'], defaults: [1, 2] }
     ];
-    $scope.dist = {}
-    $scope.models = [];
-
-    $scope.newDistribution = function(dist) {
-        return {
-            paramValues: dist.defaults
-        };
-    }
+    $scope.density = {}
+    $scope.params = [];
   });
