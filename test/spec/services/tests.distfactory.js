@@ -15,7 +15,9 @@ describe('Service: PdfFactory', function () {
     _ = ___;
   }));
 
-  it('should generate values for the gamma distribution', function () {
+  it('should have a list of pdfs', function () {
+    expect(PdfFactory.pdfs).not.toBeUndefined();
+    expect(PdfFactory.pdfs.length).toBeGreaterThan(0);
     // var xs = []
     //   , ps = []
     //   , a = 1

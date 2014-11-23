@@ -9,9 +9,7 @@
  */
 angular.module('densitiesApp')
   .controller('MainCtrl', function ($scope, PdfFactory, _) {
-        $scope.densities = [
-        	{ name: 'Gamma', params: ['alpha', 'beta'], defaults: [1, 2] }
-        ];
+        $scope.densities = PdfFactory.pdfs;
         $scope.params = null;
         $scope.density = null;
         $scope.xMax = 20;

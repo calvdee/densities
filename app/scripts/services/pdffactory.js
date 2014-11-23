@@ -11,9 +11,11 @@ angular.module('densitiesApp')
   .service('PdfFactory', function PdfFactory(_) {
     
   	return {
-		// dgamma: dgamma
+		pdfs:   		
+		[
+        	{ name: 'Gamma', params: ['alpha', 'beta'], defaults: [1, 2] }
+        ]
   	};
-
 	// function gamma(num) {
 	//     var rval=1;
 	//     for (var i = 2; i <= num-1; i++)
