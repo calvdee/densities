@@ -9,11 +9,12 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _DistFactory_) {
+  beforeEach(inject(function ($controller, $rootScope, _PdfFactory_, ___) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
-      DistFactory: _DistFactory_
+      PdfFactory: _PdfFactory_,
+      _: ___
     });
   }));
 
@@ -31,6 +32,10 @@ describe('Controller: MainCtrl', function () {
     expect(scope.hasParams()).toBe(false);
     scope.params = [];
     expect(scope.hasParams()).toBe(true);
+  });
+
+  it('should have max X value of 0', function () {
+    expect(scope.xMax).toEqual(20);
   });
 
   // it('should create a new distribution model with default parameters', function() {
