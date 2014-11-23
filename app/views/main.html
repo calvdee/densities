@@ -1,8 +1,11 @@
 <!-- Density panel -->
+
+
+<!-- Distribution panel -->
 <div class="row">
   <div class="col-md-12 bordered">
-    <div class="col-md-8 bordered">
-      <form class="form-inline" role="form">
+      <h3>Density</h3>
+      <form class="form-inline bordered-blue" role="form">
         <div class="form-group">
           <div class="btn-group" dropdown is-open="status.isopen">
             <select class="form-control btn btn-standard dropdown-toggle" ng-options="d.name for d in dists" ng-model="distribution">
@@ -25,31 +28,24 @@
             <input type="checkbox"> Remember me
           </label>
         </div> -->
-        <button type="submit" class="btn btn-primary">Add Model</button>
+        <!-- <button type="submit" class="btn btn-primary">Add Model</button> -->
       </form>
-    </div>
   </div>
 </div>
 
-<!-- Visualization panel -->
+<!-- PDF panel -->
 <div class="row">
   <div class="col-md-12 bordered">
-    <div class="col-md-6 bordered">
       <h3>PDF</h3>
-      <div class="chart" style="height: 400px"></div>
-    </div>
-    <div class="col-md-6 bordered">
-      <h3>CDF</h3>
-      <div class="chart" style="height: 400px"></div>
-    </div>
+      <div class="bordered-blue" style="height: 400px"></div>
   </div>
 </div>
 
-<!-- Model panel -->
+<!-- Parameter panel -->
 <div class="row">
   <div class="col-md-12 bordered">
-    <h3>Models</h3>
-    <div class="panel panel-default">
+    <h3>Parameters</h3>
+    <div class="panel panel-default bordered-blue">
       <div class="panel-body">
         <div class="row" ng-repeat="m in models">
           <button></button>
