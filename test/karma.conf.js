@@ -30,6 +30,7 @@ module.exports = function(config) {
       'bower_components/angular-underscore-module/angular-underscore-module.js',
       'bower_components/angular-underscore/angular-underscore-module.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/d3/d3.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'

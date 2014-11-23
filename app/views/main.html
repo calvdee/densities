@@ -8,7 +8,7 @@
       <form class="form-inline bordered-blue" role="form">
         <div class="form-group">
           <div class="btn-group" dropdown is-open="status.isopen">
-            <select class="form-control btn btn-standard dropdown-toggle" ng-options="d.name for d in dists" ng-model="distribution">
+            <select class="form-control btn btn-standard dropdown-toggle" ng-options="d.name for d in densities" ng-model="density">
               <option selected value="">Choose a distribution</option>
             </select>
           </div>
@@ -34,24 +34,33 @@
 </div>
 
 <!-- PDF panel -->
-<div class="row">
-  <div class="col-md-12 bordered">
-      <h3>PDF</h3>
-      <div class="bordered-blue" style="height: 400px"></div>
+<div class="animate-hide" ng-show="hasDensity()">
+  <div class="row">
+    <div class="col-md-12 bordered">
+        <h3>PDF</h3>
+        <div class="bordered-blue">
+          <div ng-controller="ChartCtrl">
+              <chart-form></chart-form>
+              <bar-chart height="options.height" data="data" hovered="hovered(args)"></bar-chart>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
 
-<!-- Parameter panel -->
-<div class="row">
-  <div class="col-md-12 bordered">
-    <h3>Parameters</h3>
-    <div class="panel panel-default bordered-blue">
-      <div class="panel-body">
-        <div class="row" ng-repeat="m in models">
-          <button></button>
+
+  <!-- Parameter panel -->
+  <div class="row">
+    <div class="col-md-12 bordered">
+      <h3>Parameters</h3>
+      <div class="panel panel-default bordered-blue">
+        <div class="panel-body">
+          <div class="row" ng-repeat="m in models">
+            <button></button>
+          </div>
         </div>
       </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
