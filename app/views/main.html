@@ -33,14 +33,23 @@
   </div>
 </div>
 
-<!-- PDF panel -->
+<!-- Parameter panel -->
 <div class="animate-hide" ng-show="hasDensity()">
+  <div class="row">
+    <div class="col-md-12 bordered">
+        <h3>Parameters</h3>
+        <chart-form></chart-form>      
+    </div>
+  </div>
+</div>
+
+<!-- PDF panel -->
+<div class="animate-hide" ng-show="hasParams()">
   <div class="row">
     <div class="col-md-12 bordered">
         <h3>PDF</h3>
         <div class="bordered-blue">
           <div ng-controller="ChartCtrl">
-              <chart-form></chart-form>
               <bar-chart height="options.height" data="data" hovered="hovered(args)"></bar-chart>
           </div>
         </div>
@@ -49,8 +58,9 @@
 </div>
 
 
-  <!-- Parameter panel -->
-  <div class="row">
+
+
+<!--   <div class="row">
     <div class="col-md-12 bordered">
       <h3>Parameters</h3>
       <div class="panel panel-default bordered-blue">
@@ -62,5 +72,5 @@
       </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->

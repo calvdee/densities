@@ -21,6 +21,18 @@ describe('Controller: MainCtrl', function () {
     expect(scope.densities.length).toBeGreaterThan(0);
   });
 
+  it('should indicate if there is a density selected', function() {
+    expect(scope.hasDensity()).toBe(false);
+    scope.density = {};
+    expect(scope.hasDensity()).toBe(true);
+  });
+
+  it('should indicate if there are parameters selected', function() {
+    expect(scope.hasParams()).toBe(false);
+    scope.params = [];
+    expect(scope.hasParams()).toBe(true);
+  });
+
   // it('should create a new distribution model with default parameters', function() {
   //   scope.densities.forEach(function (d) {
   //     expect(scope.newDistribution(d).paramValues.length).toBeGreaterThan(0);
