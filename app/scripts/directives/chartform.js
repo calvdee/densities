@@ -21,11 +21,18 @@ angular.module('densitiesApp')
                 console.log(d);
             };
         },
-        template: '<div class="form">' +
-                'Shape: {{options.height}}<br />' +
-                '<input type="range" ng-model="options.height" min="100" max="800" ng-click="update()"/>' +
-                'Scale: {{options.height}}<br />' +
-                '<input type="range" ng-model="options.width" min="100" max="800" ng-click="update()"/>' +
-                '<br /><button ng-click="update()">Update Data</button>'
+        template: '<div class="form col-md-6"></div>',
+        link: function (scope, element, attrs) { 
+            // element.append('Range (0 - ' + scope.domainX.current + '): <br />');
+            // element.append('<div ui-slider min="' + scope.domainX.min + '" max="' + scope.domainX.max + '" ng-model="scope.densityModel"></div>');
+        }
+        // template: '<div class="form col-md-6">' +
+        //         'Range: {{options.height}}<br />' +
+        //         '<input type="range" ng-model="options.height" min="100" max="800" ng-click="update()"/>' +
+        //         'Shape: {{options.height}}<br />' +
+        //         '<input type="range" ng-model="options.height" min="100" max="800" ng-click="update()"/>' +
+        //         'Scale: {{options.height}}<br />' +
+        //         '<input type="range" ng-model="options.width" min="100" max="800" ng-click="update()"/>' +
+        //         '<br /><button ng-click="update()">Update Data</button>'
     }
   });

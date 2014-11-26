@@ -17,10 +17,12 @@ describe('Controller: ChartCtrl', function () {
   }));
 
   it('should attach a list of data to the scope', function () {
-    expect(scope.data.length).toBe(4);
+    // expect(scope.data.length).toBe(4);
   });
 
-  it('should attach options to the scope', function () {
-    expect(scope.options).toBeDefined()
+  it('should attach the domain of x to the scope', function () {
+    expect(scope.domainX).toBeDefined();
+    expect(scope.domainX.min).toBeDefined();
+    expect(scope.domainX.max).toBeDefined();
   });
 });

@@ -2,50 +2,41 @@
 
 
 <!-- Distribution panel -->
-<div class="row">
-  <div class="col-md-12 bordered">
-      <h3>Density</h3>
-      <form class="form-inline bordered-blue" role="form">
-        <div class="form-group">
-          <div class="btn-group" dropdown is-open="status.isopen">
-            <select class="form-control btn btn-standard dropdown-toggle" ng-options="v.name for (k,v) in densities" ng-model="density">
-              <option selected value="">Choose a distribution</option>
-            </select>
-          </div>
-        </div>
-        <!-- <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon">@</div>
-            <input class="form-control" type="email" placeholder="Enter email">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="exampleInputPassword2">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Remember me
-          </label>
-        </div> -->
-        <!-- <button type="submit" class="btn btn-primary">Add Model</button> -->
-      </form>
-  </div>
-</div>
-
-<!-- Parameter panel -->
-<div class="animate-hide" ng-show="hasDensity()">
-  <div class="row bordered">
-    <div class="col-md-12">
-          <chart-form></chart-form>
+<div class="row bordered">
+  <div class="col-md-12">
+    <!-- Headers -->
+    <div class="row bordered">
+      <div class="col-md-3">
+        <h3>Distribution</h3>
+      </div>
+      <div class="col-md-9 animate-hide" ng-show="hasDensity()">
+        <h3>Parameters</h3>
+      </div>
+    </div>
+    <!-- Form -->
+    <form>
+      <div class="row bordered">
+      <!-- Distribution Chooser -->
+      <div class="col-md-2">
+        <select class="form-control btn btn-standard dropdown-toggle" ng-options="v.name for (k,v) in densities" ng-model="density">
+          <option selected value="">Choose a distribution</option>
+        </select>
+      </div>
+      <!-- Parameter Selection -->
+      <div class="col-md-3" ng-repeat="p in density.params">
+        {{p.name}}: {{p.value}}<br />
+        <input type="range" ng-model="p.value" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
+      <!-- Form Submission -->
+      
+    </form>
     </div>
   </div>
 </div>
 
 <!-- PDF panel -->
-<div class="animate-hide" ng-show="hasParams()">
-  <div class="row">
-    <div class="col-md-12 bordered">
+<div class="animate-hide" ng-show="hasDensity()">
+  <div class="row bordered">
+    <div class="col-md-12">
         <h3>PDF</h3>
         <div class="bordered-blue">
           <div ng-controller="ChartCtrl">
@@ -56,8 +47,20 @@
   </div>
 </div>
 
-
-
+<!-- 
+<h3>Parameters</h3>
+      <div class="row">
+        <div class="col-md-2">
+          Range: (0 - {{density.domain}})<br />
+          <input type="range" ng-model="density.domain" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
+        </div>
+      </div>
+      <div class="row" ng-repeat="p in density.params">
+        <div class="col-md-2">
+          {{p.name}}: {{p.value}}<br />
+          <input type="range" ng-model="p.value" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
+        </div>
+      </div> -->
 
 <!--   <div class="row">
     <div class="col-md-12 bordered">

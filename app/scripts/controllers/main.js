@@ -9,10 +9,15 @@
  */
 angular.module('densitiesApp')
   .controller('MainCtrl', function ($scope, PdfFactory, _) {
+        // ::todo: defaults should come from a factory
+        var DefaultDomainMin = 0;
+        var DefaultDomainMax = 100;
+        var DefaultCurrentX = 20;
+
+        $scope.domain = { min: DefaultDomainMin, max: DefaultDomainMax, current: 0 };
         $scope.densities = PdfFactory.pdfs;
         $scope.params = null;
         $scope.density = null;
-        $scope.xMax = 20;
         
         $scope.hasDensity = function () {
             return $scope.density !== null;
@@ -23,6 +28,6 @@ angular.module('densitiesApp')
         }
 
         $scope.generateDensityValues = function (density, min, max) {
-            
+
         }
   });

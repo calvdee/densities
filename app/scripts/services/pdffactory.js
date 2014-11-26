@@ -16,7 +16,8 @@ angular.module('densitiesApp')
   	return {
 		pdfs:   		
 		{
-        	'gamma': { name: 'Gamma', params: ['alpha', 'beta'], defaults: [1, 2], f: dgamma }
+			
+        	gamma: { name: 'Gamma', params: [{ name: 'Alpha', value: 1 }, { name: 'Beta', value: 2 }], domain: 20, f: dgamma }
         }
   	};
 

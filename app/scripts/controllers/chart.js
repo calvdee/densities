@@ -9,9 +9,9 @@
  */
 angular.module('densitiesApp')
   .controller('ChartCtrl', function ($scope, d3) {
-  	
-    $scope.options = {width: 500, height: 300, 'bar': 'aaa'};
-    $scope.data = [1, 2, 3, 4];
+
+    // $scope.chartOptions = {xMin: DefaultMinX, xMax: DefaultMaxX};
+    // $scope.data = [1, 2, 3, 4];
 
     $scope.hovered = function(d){
         $scope.barValue = d;
