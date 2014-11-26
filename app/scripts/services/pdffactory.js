@@ -29,10 +29,12 @@ angular.module('densitiesApp')
 	}
 
 	// Generates density values over the interval [a,b]
-	function dgamma(xs, a, b) { 
+	function dgamma(xs, params) { 
+		var a = params.a;
+		var b = params.b;
 		var densities = [];
 		xs.forEach(function(x) {
-			return Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a);
+			densities.push(Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a));
 		});
 		return densities;
 	}

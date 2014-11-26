@@ -35,7 +35,7 @@ d3.custom.density = function module() {
 
     function exports(_selection) {
         _selection.each(function(_data) {
-            console.log(_selection);
+            console.log(_data);
             // var chartW = width - margin.left - margin.right,
             //     chartH = height - margin.top - margin.bottom;
 

@@ -23,6 +23,6 @@ angular.module('densitiesApp')
         }
 
         $scope.generateDensityValues = function (density, min, max) {
-
+            
         }
   });
