@@ -18,7 +18,6 @@ angular.module('densitiesApp')
             }
             $scope.update = function(d, i) { 
                 // $scope.data = $scope.randomData(); 
-                console.log(d);
             };
         },
         template: '<div class="form col-md-6"></div>',

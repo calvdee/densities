@@ -16,7 +16,7 @@ angular.module('densitiesApp')
   	return {
 		pdfs:   		
 		{
-			
+
         	gamma: { name: 'Gamma', params: [{ name: 'Alpha', value: 1 }, { name: 'Beta', value: 2 }], domain: 20, f: dgamma }
         }
   	};
@@ -31,8 +31,8 @@ angular.module('densitiesApp')
 
 	// Generates density values over the interval [a,b]
 	function dgamma(xs, params) { 
-		var a = params.a;
-		var b = params.b;
+		var a = params[0].value;
+		var b = params[1].value;
 		var densities = [];
 		xs.forEach(function(x) {
 			densities.push(Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a));

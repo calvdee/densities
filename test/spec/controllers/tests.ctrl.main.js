@@ -34,12 +34,13 @@ describe('Controller: MainCtrl', function () {
     expect(scope.hasParams()).toBe(true);
   });
 
-  it('should have max X value of 0', function () {
-    expect(scope.xMax).toEqual(20);
+  it('should have domain [0,20]', function () {
+    expect(scope.domain.min).toEqual(0);
+    expect(scope.domain.max).toEqual(100);
   });
 
   it('should generate density values for an interval', function () {
-
+    // expect(scope.generateDensityValues)
   });
 
   // it('should create a new distribution model with default parameters', function() {

@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- Form -->
-    <form>
+    <form ng-submit="onRecalculate()">
       <div class="row bordered">
         <!-- Distribution Chooser -->
         <div class="col-md-3">
@@ -29,7 +29,7 @@
         </div>
         <!-- Form Submission -->
         <div class="col-md-1 animate-hide" ng-show="hasDensity()">
-          <button class="btn btn-primary">Re-Calculate</button>
+          <input type="submit" class="btn btn-primary" value="Re-Calculate" />
         </div>
     </div>
   </form>
