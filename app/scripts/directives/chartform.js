@@ -25,7 +25,7 @@ angular.module('densitiesApp')
                 'Shape: {{options.height}}<br />' +
                 '<input type="range" ng-model="options.height" min="100" max="800" ng-click="update()"/>' +
                 'Scale: {{options.height}}<br />' +
-                '<input type="range" ng-model="options.height" min="100" max="800" ng-click="update()"/>' +
+                '<input type="range" ng-model="options.width" min="100" max="800" ng-click="update()"/>' +
                 '<br /><button ng-click="update()">Update Data</button>'
     }
   });

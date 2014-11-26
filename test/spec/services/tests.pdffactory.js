@@ -16,18 +16,20 @@ describe('Service: PdfFactory', function () {
   }));
 
   it('should have a list of pdfs', function () {
-    expect(PdfFactory.pdfs).not.toBeUndefined();
-    expect(PdfFactory.pdfs.length).toBeGreaterThan(0);
-    // var xs = []
-    //   , ps = []
-    //   , a = 1
-    //   , b = 2;
+    var pdfs = PdfFactory.pdfs;
 
-    // var dGammas = DistFactory.dgamma(xs, a, b);
+    expect(pdfs).not.toBeUndefined();
+    
+    var xs = []
+      , ps = []
+      , a = 1
+      , b = 2;
 
-    // expect(dGammas[0]).toEqual(ps[0]);
-    // expect(dGammas[1]).toEqual(ps[1]);
-    // expect(dGammas[2]).toEqual(ps[2]);
+    var gammas = pdfs.gamma.f(xs, a, b);
+
+    expect(gammas[0]).toEqual(ps[0]);
+    expect(gammas[1]).toEqual(ps[1]);
+    expect(gammas[2]).toEqual(ps[2]);
   });
 
   // it('should have gamma distribution with alpha and beta', function () {

@@ -21,7 +21,8 @@ angular.module('densitiesApp')
         $scope.hasParams = function () {
             return $scope.params !== null;
         }
-        $scope.generatePdf = function () {
+
+        $scope.generateDensityValues = function (density, min, max) {
 
         }
   });

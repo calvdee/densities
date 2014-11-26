@@ -38,6 +38,10 @@ describe('Controller: MainCtrl', function () {
     expect(scope.xMax).toEqual(20);
   });
 
+  it('should generate density values for an interval', function () {
+
+  });
+
   // it('should create a new distribution model with default parameters', function() {
   //   scope.densities.forEach(function (d) {
   //     expect(scope.newDistribution(d).paramValues.length).toBeGreaterThan(0);
