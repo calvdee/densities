@@ -16,21 +16,23 @@
     <!-- Form -->
     <form>
       <div class="row bordered">
-      <!-- Distribution Chooser -->
-      <div class="col-md-2">
-        <select class="form-control btn btn-standard dropdown-toggle" ng-options="v.name for (k,v) in densities" ng-model="density">
-          <option selected value="">Choose a distribution</option>
-        </select>
-      </div>
-      <!-- Parameter Selection -->
-      <div class="col-md-3" ng-repeat="p in density.params">
-        {{p.name}}: {{p.value}}<br />
-        <input type="range" ng-model="p.value" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
-      <!-- Form Submission -->
-      
-    </form>
+        <!-- Distribution Chooser -->
+        <div class="col-md-3">
+          <select class="form-control btn btn-standard dropdown-toggle" ng-options="v.name for (k,v) in densities" ng-model="density">
+            <option selected value="">Choose a distribution</option>
+          </select>
+        </div>
+        <!-- Parameter Selection -->
+        <div class="col-md-3" ng-repeat="p in density.params">
+          {{p.name}}: {{p.value}}<br />
+          <input type="range" ng-model="p.value" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
+        </div>
+        <!-- Form Submission -->
+        <div class="col-md-1 animate-hide" ng-show="hasDensity()">
+          <button class="btn btn-primary">Re-Calculate</button>
+        </div>
     </div>
-  </div>
+  </form>
 </div>
 
 <!-- PDF panel -->
