@@ -1,7 +1,7 @@
 d3.custom = {};
 
 d3.custom.density = function module() {
-    var margin = {top: 20, right: 20, bottom: 40, left: 40},
+    var margin = {top: 0, right: 0, bottom: 0, left: 0},
         width = 500,
         height = 500,
         gap = 0,
@@ -20,7 +20,7 @@ d3.custom.density = function module() {
             //     chartH = height - margin.top - margin.bottom;
 
             // graph dimensions
-            var m = [40, 80, 80, 80];   // margins
+            var m = [40, 20, 80, 20];   // margins
             var w = _chartOpts.width - m[1] - m[3];  // width
             var h = _chartOpts.height - m[0] - m[2];  // height
 
