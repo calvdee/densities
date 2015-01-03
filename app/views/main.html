@@ -7,40 +7,51 @@
 
     <!-- Row 1 -->
     <div class="row">
-      <!-- Density selection -->
       <form class="form-horizontal">
+        <!-- Density selection -->
         <div class="form-group">
           <label class="col-sm-2 control-label" for="density-dropdown">Density</label>
-          <div class="col-sm-4">
+          <div class="col-sm-9">
             <div class="dropdown">
               <button class="btn btn-default" type="button" id="density-dropdown" data-toggle="dropdown" aria-expanded="true">
                 Choose a density
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="density-dropdown">
-                <li role="presentation" ng-repeat="d in densities">
+                <li role="presentation" ng-repeat="d in densities" ng-click="onDensity(d)">
                   <a role="menuitem" tabindex="-1">{{d.name}}</a>
                 </li>
               </ul>
             </div>
           </div>
-      </form>
-    </div>
-</div>
-
-<!-- PDF panel -->
-<div class="animate-hide" ng-show="hasDensity()">
-  <div class="row bordered">
-    <div class="col-md-12">
-        <h3>PDF</h3>
-        <div class="bordered-blue">
-          <div ng-controller="ChartCtrl">
-              <bar-chart opts="chartOpts" data="data" hovered="hovered(args)"></bar-chart>
+        </div>
+        <!-- Parameters -->
+        <div class="form-group animate-hide" ng-show="hasDensity()">
+          <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
+          <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
+            <input class="form-control" 
+                   type="range" 
+                   ng-model="p.value" 
+                   min="{{p.minValue}}" 
+                   max="{{p.maxValue}}" 
+                   value="{{p.value}}"
+                   ng-mouseup="computeChart()"/>
+            <p class="text-right">{{p.name}}: {{p.value}}</p>
           </div>
         </div>
+      </form>
     </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-md-12 animate-hide" ng-show="hasDensity()">
+        <bar-chart opts="chartOpts" data="data" hovered="hovered(args)"></bar-chart>
+      </div>
+    </div>
+
   </div>
 </div>
+
 
 <!-- 
 <h3>Parameters</h3>

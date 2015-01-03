@@ -10,13 +10,13 @@
 angular.module('densitiesApp')
   .controller('MainCtrl', function ($scope, PdfFactory, AppConfig, _, d3) {
         // ::todo: defaults should come from a factory
-        var DefaultDomainMin = 0;
-        var DefaultDomainMax = 100;
-        var DefaultCurrentX = 20;
+        var domainMin = AppConfig.chart.domainMin;
+        var domainMax = AppConfig.chart.domainMax;
+        var domainCurrent = AppConfig.chart.domainCurrent;
 
         $scope.chartOpts = AppConfig.chart;
 
-        $scope.domain = { min: DefaultDomainMin, max: DefaultDomainMax, current: 0 };
+        $scope.domain = { min: domainMin, max: domainMax, current: domainCurrent };
         $scope.densities = PdfFactory.pdfs;
         $scope.params = null;
         $scope.density = null;
@@ -31,18 +31,31 @@ angular.module('densitiesApp')
         }
 
         $scope.generateDensityValues = function (domain, params) {
-            var densities =  $scope.density.f(domain, params)
-            return densities
+            var densities =  $scope.density.f(domain, params);
+            return densities;
         }
 
-        $scope.onRecalculate = function () {
-            // Use the model to calculate densities over the domain
-            var domain = d3.range($scope.domain.min, $scope.domain.current)
-            var range = $scope.generateDensityValues(domain, $scope.density.params)
-            var xys = $scope.toXY(domain, range)
+        $scope.onDensity = function (density) {
+            var newDensity = density;
+            var oldDensity = $scope.density;
 
-            $scope.data = xys
-            console.log(xys)
+            if(newDensity !== oldDensity){
+                $scope.domain.current = newDensity.domain;
+                $scope.density = newDensity;
+
+                // Immediately compute the chart
+                $scope.computeChart();
+            }
+        }
+
+        $scope.computeChart = function () {
+            // Use the model to calculate densities over the domain
+            var domain = d3.range($scope.domain.min, $scope.domain.current, 0.01);
+            console.log(domain)
+            var range = $scope.generateDensityValues(domain, $scope.density.params);
+            var xys = $scope.toXY(domain, range);            
+
+            $scope.data = xys;
         }
 
         $scope.toXY = function(domain, range) {
@@ -51,10 +64,4 @@ angular.module('densitiesApp')
                 xys.push({ x: domain[i], y: range[i]})
             return xys
         }
-
-        $scope.$watch('density', function(newValue, oldValue) {
-          if(newValue !== oldValue)
-            $scope.domain.current = newValue.domain
-        });
-
   });
