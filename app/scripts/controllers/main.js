@@ -36,9 +36,18 @@ angular.module('densitiesApp')
         $scope.onRecalculate = function () {
             // Use the model to calculate densities over the domain
             var domain = d3.range($scope.domain.min, $scope.domain.current)
-            var densities = $scope.generateDensityValues(domain, $scope.density.params)
-            console.log(densities)
-            $scope.data = densities
+            var range = $scope.generateDensityValues(domain, $scope.density.params)
+            var xys = $scope.toXY(domain, range)
+
+            $scope.data = xys
+            console.log(xys)
+        }
+
+        $scope.toXY = function(domain, range) {
+            var xys = []
+            for(var i = 0; i < domain.length; i++)
+                xys.push({ x: domain[i], y: range[i]})
+            return xys
         }
 
         $scope.$watch('density', function(newValue, oldValue) {

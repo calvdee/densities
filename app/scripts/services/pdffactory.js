@@ -15,21 +15,20 @@ angular.module('densitiesApp')
     
   	return {
 		pdfs:   		
-		{
-
+		{			
         	gamma: { name: 'Gamma', params: [{ name: 'Alpha', value: 1 }, { name: 'Beta', value: 2 }], domain: 20, f: dgamma }
         }
   	};
 
   	// Generates values using the gamma function defined as (n-1)!
 	function gamma(num) {
-	    var rval=1;
+	    var g=1;
 	    for (var i = 2; i <= num-1; i++)
-	        rval = rval * i;
-	    return rval;
+	        g = g * i;
+	    return g;
 	}
 
-	// Generates density values over the interval [a,b]
+	// Generates density values for the Gamma distribution over the interval [a,b]
 	function dgamma(xs, params) { 
 		var a = params[0].value;
 		var b = params[1].value;

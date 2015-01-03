@@ -35,6 +35,10 @@ d3.custom.density = function module() {
 
     function exports(_selection) {
         _selection.each(function(_data) {
+
+            if(_data.length === 0)
+                return;
+
             console.log(_data);
             // var chartW = width - margin.left - margin.right,
             //     chartH = height - margin.top - margin.bottom;
@@ -47,11 +51,9 @@ d3.custom.density = function module() {
 
             // scales
             // var initData = gammaPdf(xs, 1, 2);
-            // var xBounds = d3.extent(xs); //console.log(xBounds);
-            // var yBounds = d3.extent(initData, function(d) { return d.p; }); //console.log(yBounds);
-            // ::todo: no hardcoding
-            var xBounds = [0,20];
-            var yBounds = [0,0.5];
+            var xys = _data;
+            var xBounds = d3.extent(xys, function(xy) {return xy.x;}); //console.log(xBounds);
+            var yBounds = d3.extent(xys, function(xy) {return xy.y;}); //console.log(yBounds);
             var xScale = d3.scale.linear().domain(xBounds).range([0, w]);
             var yScale = d3.scale.linear().domain(yBounds).range([h, 0]);
 
@@ -67,8 +69,8 @@ d3.custom.density = function module() {
                               .ticks(8);
 
             var line = d3.svg.line()
-                .x(function(d) { return xScale(+d.x); })
-                .y(function(d) { return yScale(+d.p); })
+                .x(function(xy) { return xScale(+xy.x); })
+                .y(function(xy) { return yScale(+xy.y); })
 
             // create the chart
             if(!svg) { 
@@ -90,7 +92,7 @@ d3.custom.density = function module() {
                       .call(yAxis);
                       
                 svg.append("path")
-                  .attr("d", line(initData))
+                  .attr("d", line(xys))
                   .attr("class", "line");
             }
 
@@ -107,7 +109,12 @@ d3.custom.density = function module() {
             //     container.append('g').classed('x-axis-group axis', true);
             //     container.append('g').classed('y-axis-group axis', true);
             // }
-
+            
+            svg.selectAll("path.line")
+                .transition()
+                .duration(2000)
+                .attr("d", line(xys));
+            
             // svg.transition().duration(duration).attr({width: width, height: height})
             // svg.select('.container-group')
             //     .attr({transform: 'translate(' + margin.left + ',' + margin.top + ')'});
@@ -174,6 +181,8 @@ d3.custom.density = function module() {
         ease = _x;
         return this;
     };
+
     d3.rebind(exports, dispatch, 'on');
+    
     return exports;
 };
