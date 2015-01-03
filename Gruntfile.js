@@ -27,6 +27,22 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
+
+    buildcontrol: {
+        options: {
+            dir: 'dist',
+            commit: true,
+            push: true,
+            message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+        },
+        heroku: {
+            options: {
+                remote: 'git@heroku.com:densities-app.git',
+                branch: 'master'
+            }
+        }
+     }
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -138,7 +154,11 @@ module.exports = function (grunt) {
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git*'
+            '!<%= yeoman.dist %>/.git{,*/}*',
+            '!<%= yeoman.dist %>/Procfile',
+            '!<%= yeoman.dist %>/package.json',
+            '!<%= yeoman.dist %>/web.js',
+            '!<%= yeoman.dist %>/node_modules'
           ]
         }]
       },
