@@ -14,10 +14,9 @@ angular.module('densitiesApp')
   .service('PdfFactory', function PdfFactory(_) {
     
   	return {
-		pdfs:   		
-		{			
-        	gamma: { name: 'Gamma', params: [{ name: 'Alpha', value: 1 }, { name: 'Beta', value: 2 }], domain: 20, f: dgamma }
-        }
+			pdfs: {			
+	        	gamma: { name: 'Gamma', params: [{ name: 'Alpha', value: 1 }, { name: 'Beta', value: 2 }], domain: 20, f: dgamma }
+			}
   	};
 
   	// Generates values using the gamma function defined as (n-1)!

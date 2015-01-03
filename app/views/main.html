@@ -4,35 +4,28 @@
 <!-- Density panel -->
 <div class="row bordered">
   <div class="col-md-12">
-    <!-- Headers -->
-    <div class="row bordered">
-      <div class="col-md-3">
-        <h3>Distribution</h3>
-      </div>
-      <div class="col-md-9 animate-hide" ng-show="hasDensity()">
-        <h3>Parameters</h3>
-      </div>
+
+    <!-- Row 1 -->
+    <div class="row">
+      <!-- Density selection -->
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="density-dropdown">Density</label>
+          <div class="col-sm-4">
+            <div class="dropdown">
+              <button class="btn btn-default" type="button" id="density-dropdown" data-toggle="dropdown" aria-expanded="true">
+                Choose a density
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="density-dropdown">
+                <li role="presentation" ng-repeat="d in densities">
+                  <a role="menuitem" tabindex="-1">{{d.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </form>
     </div>
-    <!-- Form -->
-    <form ng-submit="onRecalculate()">
-      <div class="row bordered">
-        <!-- Distribution Chooser -->
-        <div class="col-md-3">
-          <select class="form-control btn btn-standard dropdown-toggle" ng-options="v.name for (k,v) in densities" ng-model="density">
-            <option selected value="">Choose a distribution</option>
-          </select>
-        </div>
-        <!-- Parameter Selection -->
-        <div class="col-md-3" ng-repeat="p in density.params">
-          {{p.name}}: {{p.value}}<br />
-          <input type="range" ng-model="p.value" min="{{domain.min}}" max="{{domain.max}}" value="{{density.domain}}" ng-click="update()"/>
-        </div>
-        <!-- Form Submission -->
-        <div class="col-md-1 animate-hide" ng-show="hasDensity()">
-          <input type="submit" class="btn btn-primary" value="Re-Calculate" />
-        </div>
-    </div>
-  </form>
 </div>
 
 <!-- PDF panel -->
