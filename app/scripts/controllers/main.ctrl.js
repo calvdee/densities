@@ -8,11 +8,13 @@
  * Controller of the densitiesApp
  */
 angular.module('densitiesApp')
-  .controller('MainCtrl', function ($scope, PdfFactory, _, d3) {
+  .controller('MainCtrl', function ($scope, PdfFactory, AppConfig, _, d3) {
         // ::todo: defaults should come from a factory
         var DefaultDomainMin = 0;
         var DefaultDomainMax = 100;
         var DefaultCurrentX = 20;
+
+        $scope.chartOpts = AppConfig.chart;
 
         $scope.domain = { min: DefaultDomainMin, max: DefaultDomainMax, current: 0 };
         $scope.densities = PdfFactory.pdfs;
