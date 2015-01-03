@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 branch: 'master'
             }
         }
-     }
+     },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -429,4 +429,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('deploy', ['buildcontrol']);
 };
