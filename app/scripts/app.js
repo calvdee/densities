@@ -30,6 +30,10 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/splash', {
+        templateUrl: 'views/splash.html',
+        controller: 'SplashCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
