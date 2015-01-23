@@ -10,6 +10,8 @@ describe('Service: PdfFactory', function () {
       ,_;
 
   function toPrecision(x, n) {
+    // console.log(x)
+    // console.log(n)
     return (parseFloat(x.toPrecision(n)));
   }
 
@@ -25,33 +27,32 @@ describe('Service: PdfFactory', function () {
     expect(pdfs).not.toBeUndefined();
 
     var xs = [1, 2, 3, 4, 5]
-      , ps = [0.30326533, 0.18393972, 0.11156508, 0.06766764, 0.04104250]
+      , ys = [0.30326533, 0.18393972, 0.11156508, 0.06766764, 0.04104250]
       , a = 1
       , b = 2;
 
-    var params = { 'a': a, 'b': b };
+    var params = [a, b]
+    var densities = pdfs.gamma.f(xs, params);
 
-    var gammas = pdfs.gamma.f(xs, params);
+    densities.map(function(x){ return toPrecision(x, 3); })
+    ys.map(function(x){ return toPrecision(x, 3); })
 
-    gammas.map(function(x){ return toPrecision(x, 3); })
-    ps.map(function(x){ return toPrecision(x, 3); })
-
-    expect(toPrecision(gammas[0], 3)).toEqual(toPrecision(ps[0], 3));
-    expect(toPrecision(gammas[1], 3)).toEqual(toPrecision(ps[1], 3));
-    expect(toPrecision(gammas[2], 3)).toEqual(toPrecision(ps[2], 3));
+    expect(toPrecision(densities[0], 3)).toEqual(toPrecision(ys[0], 3));
+    expect(toPrecision(densities[1], 3)).toEqual(toPrecision(ys[1], 3));
+    expect(toPrecision(densities[2], 3)).toEqual(toPrecision(ys[2], 3));
   });
 
   // it('should have gamma distribution with alpha and beta', function () {
   //   var xs = []
-  //     , ps = []
+  //     , ys = []
   //     , a = 1
   //     , b = 2;
 
-  //   var dGammas = DistFactory.dgamma(xs, a, b);
+  //   var ddensities = DistFactory.dgamma(xs, a, b);
 
-  //   expect(dGammas[0]).toEqual(ps[0]);
-  //   expect(dGammas[1]).toEqual(ps[1]);
-  //   expect(dGammas[2]).toEqual(ps[2]);
+  //   expect(ddensities[0]).toEqual(ys[0]);
+  //   expect(ddensities[1]).toEqual(ys[1]);
+  //   expect(ddensities[2]).toEqual(ys[2]);
   // });
 
 });

@@ -19,8 +19,8 @@ angular.module('densitiesApp')
 	  pdfs.gamma = {
 			name: 'Gamma', 
 			params: [
-				{ name: 'Alpha (α)', minValue: 1, maxValue: 100, value: 1 }, 
-			 	{ name: 'Beta (β)', minValue: 1, maxValue: 100, value: 2 }
+				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1 }, 
+			 	{ name: 'Scale (β)', minValue: 1, maxValue: 100, value: 2 }
 			 ], 
 			domain: 20, 
 			f: dgamma
@@ -31,21 +31,21 @@ angular.module('densitiesApp')
   		pdfs: pdfs
   	};
 
-	  	// Generates values using the gamma function defined as (n-1)!
+		// Generates values using the gamma function defined as (n-1)!
 		function gamma(num) {
 		    var g=1;
-		    for (var i = 2; i <= num-1; i++)
-		        g = g * i;
+		    for (var i = 2; i <= num-1; i++) 
+		    	g = g * i;
 		    return g;
 		}
 
 		// Generates density values for the Gamma distribution over the interval [a,b]
 		function dgamma(xs, params) { 
-			var a = params[0].value;
-			var b = params[1].value;
+			var shape = params[0];
+			var scale = params[1];
 			var densities = [];
 			xs.forEach(function(x) {
-				densities.push(Math.pow(1/b, a)*Math.pow(x, a-1)*Math.exp(-x*1/b)/gamma(a));
+				densities.push(Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape));
 			});
 			return densities;
 		}
