@@ -31,7 +31,11 @@ angular.module('densitiesApp')
         }
 
         $scope.generateDensityValues = function (domain, params) {
-            var densities =  $scope.density.f(domain, params);
+            var param_values = [];
+
+            params.map(function(x) { param_values.push(x.value); });
+            
+            var densities =  $scope.density.f(domain, param_values);
             return densities;
         }
 
@@ -51,9 +55,10 @@ angular.module('densitiesApp')
         $scope.computeChart = function () {
             // Use the model to calculate densities over the domain
             var domain = d3.range($scope.domain.min, $scope.domain.current, 0.01);
-            console.log(domain)
             var range = $scope.generateDensityValues(domain, $scope.density.params);
             var xys = $scope.toXY(domain, range);            
+
+            console.log(xys)
 
             $scope.data = xys;
         }
