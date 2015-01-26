@@ -30,12 +30,14 @@
           <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
           <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
             <input class="form-control" 
-                   type="range" 
+                   type="number" 
                    ng-model="p.value" 
                    min="{{p.minValue}}" 
                    max="{{p.maxValue}}" 
                    value="{{p.value}}"
-                   ng-mouseup="computeChart()"/>
+                   step="0.1"
+                   ng-mouseup="computeChart()"
+                   ng-change="computeChart()"/>
             <p class="text-right">{{p.name}}: {{p.value}}</p>
           </div>
         </div>

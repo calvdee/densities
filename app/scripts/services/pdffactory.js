@@ -41,13 +41,15 @@ angular.module('densitiesApp')
 
 		// Generates density values for the Gamma distribution over the interval [a,b]
 		function dgamma(xs, params) { 
-			console.log(params)
 			var shape = params[0];
 			var scale = params[1];
 			var densities = [];
 			xs.forEach(function(x) {
-				densities.push(Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape));
+				var y = Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape);
+				console.log(y)
+				densities.push(y);
 			});
+			console.log(densities.length)
 			return densities;
 		}
 

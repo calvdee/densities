@@ -36,6 +36,7 @@ angular.module('densitiesApp')
             params.map(function(x) { param_values.push(x.value); });
             
             var densities =  $scope.density.f(domain, param_values);
+
             return densities;
         }
 
@@ -57,8 +58,6 @@ angular.module('densitiesApp')
             var domain = d3.range($scope.domain.min, $scope.domain.current, 0.01);
             var range = $scope.generateDensityValues(domain, $scope.density.params);
             var xys = $scope.toXY(domain, range);            
-
-            console.log(xys)
 
             $scope.data = xys;
         }

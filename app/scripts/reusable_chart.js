@@ -16,18 +16,15 @@ d3.custom.density = function module() {
             if(_data.length === 0)
                 return;
 
-            // var chartW = width - margin.left - margin.right,
-            //     chartH = height - margin.top - margin.bottom;
-
             // graph dimensions
-            var m = [40, 20, 80, 20];   // margins
+            var m = [40, 20, 80, 30];   // margins
             var w = _chartOpts.width - m[1] - m[3];  // width
             var h = _chartOpts.height - m[0] - m[2];  // height
 
 
             // scales
-            // var initData = gammaPdf(xs, 1, 2);
             var xys = _data;
+
             var xBounds = d3.extent(xys, function(xy) {return xy.x;}); //console.log(xBounds);
             var yBounds = d3.extent(xys, function(xy) {return xy.y;}); //console.log(yBounds);
             var xScale = d3.scale.linear().domain(xBounds).range([0, w]);
@@ -41,8 +38,7 @@ d3.custom.density = function module() {
 
             var yAxis = d3.svg.axis()
                               .scale(yScale)
-                              .orient("left")
-                              .ticks(8);
+                              .orient("left");  
 
             var line = d3.svg.line()
                 .x(function(xy) { return xScale(+xy.x); })
