@@ -18,7 +18,7 @@ d3.custom.density = function module() {
                 return;
 
             // graph dimensions
-            var m = [40, 10, 80, 87];   // margins
+            var m = [_chartOpts.top, _chartOpts.right, _chartOpts.bottom, _chartOpts.left];   // margins
             var w = _chartOpts.width - m[1] - m[3];  // width
             var h = _chartOpts.height - m[0] - m[2];  // height
 

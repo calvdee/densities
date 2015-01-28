@@ -13,7 +13,11 @@ angular.module('densitiesApp')
 		var config = {};
 
   	config.chart = {
-			width: 900, 
+      top: 40, 
+      right: 20, 
+      bottom: 20, 
+      left: 30,
+			width: 970, 
 			height: 500,
 			domainMin: 0,
   		domainMax: 100,

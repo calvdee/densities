@@ -7,10 +7,10 @@
     <!-- Row 1 -->
     <div class="row">
       <form class="form-horizontal">
-        <!-- Density selection -->
+        <!-- Density list -->
         <div class="form-group">
           <label class="col-sm-2 control-label" for="density-dropdown">Density</label>
-          <div class="col-sm-9">
+          <div class="col-sm-2 border-blue">
             <div class="dropdown">
               <button class="btn btn-default" type="button" id="density-dropdown" data-toggle="dropdown" aria-expanded="true">
                 Choose a density
@@ -24,10 +24,14 @@
             </div>
           </div>
         </div>
+        <!-- Domain -->
+        <div class="form-group animate-hide" ng-show="hasDensity()">
+
+        </div>
         <!-- Parameters -->
         <div class="form-group animate-hide" ng-show="hasDensity()">
           <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
-          <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
+          <div id="{{p.name}}" class="col-md-2 border-blue" ng-repeat="p in density.params">
             <input class="form-control" 
                    type="number" 
                    ng-model="p.value" 
@@ -53,18 +57,11 @@
 
     <!-- Row 3 -->
     <div class="row animate-hide" ng-show="hasDensity()" id="chart">
-      <div class="col-md-1 col-md-push-1 text-right" style="padding: 0">
-        <label class="text-right">0</label>
-      </div>
-      <div class="col-md-8 col-md-push-1">
-        <!-- Domain Control -->
-         <input class="form-control" 
-                    type="range" 
-                    type="number" 
-                    />
-      </div>
-      <div class="col-md-1 col-md-push-1" style="padding: 0">
-        <label class="text-right">0</label>
+      <div class="col-md-2 col-md-push-9">
+           <input class="form-control" 
+                      type="range" 
+                      value="20"
+                      />
       </div>
     </div>
 
