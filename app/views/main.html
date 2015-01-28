@@ -31,7 +31,7 @@
         <!-- Parameters -->
         <div class="form-group animate-hide" ng-show="hasDensity()">
           <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
-          <div id="{{p.name}}" class="col-md-2 border-blue" ng-repeat="p in density.params">
+          <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
             <input class="form-control" 
                    type="number" 
                    ng-model="p.value" 
