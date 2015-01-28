@@ -38,8 +38,7 @@
                    min="{{p.minValue}}" 
                    max="{{p.maxValue}}" 
                    value="{{p.value}}"
-                   step="0.1"
-                   ng-mouseup="computeChart()"
+                   step="{{p.step}}"
                    ng-change="computeChart()"/>
             <p class="text-right">{{p.name}}: {{p.value}}</p>
           </div>

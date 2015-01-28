@@ -19,8 +19,8 @@ angular.module('densitiesApp')
 	  pdfs.gamma = {
 			name: 'Gamma', 
 			params: [
-				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1 }, 
-			 	{ name: 'Scale (β)', minValue: 1, maxValue: 100, value: 2 }
+				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 3.75 }, 
+			 	{ name: 'Scale (β)', minValue: 1, maxValue: 100, value: 2, step: 1.0 }
 			 ], 
 			domain: 20, 
 			f: dgamma
