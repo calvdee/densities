@@ -82,8 +82,8 @@ body {
   border: 1px solid;
 }*/
 
-.bordered-blue {
-  /*border: 1px solid blue;*/
+.border-blue {
+  border: 1px solid blue;
 }
 
 /* Chart ================================== */

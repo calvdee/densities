@@ -1,4 +1,3 @@
-<!-- Density panel -->
 
 
 <!-- Density panel -->
@@ -45,10 +44,27 @@
     </div>
 
     <!-- Row 2 -->
-    <div class="row" id="chart">
-      <div class="col-md-10 col-md-push-2 animate-hide" ng-show="hasDensity()">
-        
-        <bar-chart opts="chartOpts" data="data" hovered="hovered(args)"></bar-chart>
+    <div class="row">
+      <div class="col-md-11 animate-hide border-blue col-md-push-1" ng-show="hasDensity()">
+        <!-- Density Chart -->
+        <density-chart opts="chartOpts" data="data" hovered="hovered(args)"></density-chart>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row animate-hide" ng-show="hasDensity()" id="chart">
+      <div class="col-md-1 col-md-push-1 border-blue text-right" style="padding: 0">
+        <label class="text-right">0</label>
+      </div>
+      <div class="col-md-8 col-md-push-1 border-blue">
+        <!-- Domain Control -->
+         <input class="form-control" 
+                    type="range" 
+                    type="number" 
+                    />
+      </div>
+      <div class="col-md-1 col-md-push-1 border-blue" style="padding: 0">
+        <label class="text-right">0</label>
       </div>
     </div>
 

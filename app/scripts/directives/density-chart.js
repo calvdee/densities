@@ -7,7 +7,7 @@
  * # barChart
  */
 angular.module('densitiesApp')
-  .directive('barChart', function (d3) {
+  .directive('densityChart', function (d3) {
     var chart = d3.custom.density();
 	return {
         restrict: 'E',

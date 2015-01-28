@@ -1,6 +1,7 @@
 d3.custom = {};
 
 d3.custom.density = function module() {
+
     var margin = {top: 0, right: 0, bottom: 0, left: 0},
         width = 500,
         height = 500,
@@ -17,7 +18,7 @@ d3.custom.density = function module() {
                 return;
 
             // graph dimensions
-            var m = [40, 20, 80, 30];   // margins
+            var m = [40, 10, 80, 87];   // margins
             var w = _chartOpts.width - m[1] - m[3];  // width
             var h = _chartOpts.height - m[0] - m[2];  // height
 
@@ -46,6 +47,7 @@ d3.custom.density = function module() {
 
             // create the chart
             if(!svg) { 
+                // console.log(this)
                 svg = d3.select(this)
                     .append("svg:svg")
                       .attr("width", w + m[1] + m[3])
