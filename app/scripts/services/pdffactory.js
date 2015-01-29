@@ -32,25 +32,39 @@ angular.module('densitiesApp')
   	};
 
 		// Generates values using the gamma function defined as (n-1)!
-		function gamma(num) {
-		    var g=1;
-		    for (var i = 2; i <= num-1; i++) 
+		function gamma(x) {
+		    var g = 1;
+		    for (var i = 2; i <= x-1; i++) 
 		    	g = g * i;
 		    return g;
+		}
+
+		// Generates values using the beta function defined as (x-1)!(y-1)!/(x + y - 1)!
+		function beta (x, y) {
+			// Write the function in terms of gamma
+			var b = gamma(x) + gamma(y) / gamma(x + y)
+			return b;
+		}
+
+		function compute(xs, fn) {
+			var densities = [];
+			xs.forEach(function(x) {
+				var y = fn(x);
+				densities.push(y);
+			});
+			return densities;
 		}
 
 		// Generates density values for the Gamma distribution over the interval [a,b]
 		function dgamma(xs, params) { 
 			var shape = params[0];
 			var scale = params[1];
-			var densities = [];
-			xs.forEach(function(x) {
-				var y = Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape);
-				console.log(y)
-				densities.push(y);
-			});
-			console.log(densities.length)
+			var fn = function(x) { return Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape); }
+			var densities = compute(xs, fn)
 			return densities;
 		}
 
+		function dbeta(xs, params) {
+			Math.pow(x, a-1) * Math.pow(1-x, b-1)/beta(a,b)
+		}
   });
