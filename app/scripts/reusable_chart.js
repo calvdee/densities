@@ -6,7 +6,7 @@ d3.custom.density = function module() {
         width = 500,
         height = 500,
         gap = 0,
-        ease = 'cubic-in-out';
+        ease = 'quad2-in-out';
     var svg, duration = 500;
 
     var dispatch = d3.dispatch('customHover');
@@ -86,8 +86,16 @@ d3.custom.density = function module() {
             
             svg.selectAll("path.line")
                 .transition()
-                .duration(2000)
+                .duration(1500)
+                .ease(ease)
                 .attr("d", line(xys));
+
+            svg.select(".y")
+                .filter(".axis")
+                .transition()
+                .duration(1500)
+                .ease("sin-in-out")
+                .call(yAxis);
             
             // svg.transition().duration(duration).attr({width: width, height: height})
             // svg.select('.container-group')

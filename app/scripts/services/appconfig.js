@@ -12,6 +12,10 @@ angular.module('densitiesApp')
     
 		var config = {};
 
+    var infos = {};
+
+    infos.densities = 'The density function used to compute probability';
+
   	config.chart = {
       top: 40, 
       right: 20, 
@@ -23,6 +27,8 @@ angular.module('densitiesApp')
   		domainMax: 100,
   		domainCurrent: 0
   	};
+    
+    config.infos = infos;
 
   	return config;
   });

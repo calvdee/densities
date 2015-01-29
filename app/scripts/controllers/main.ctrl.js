@@ -9,13 +9,16 @@
  */
 angular.module('densitiesApp')
   .controller('MainCtrl', function ($scope, PdfFactory, AppConfig, _, d3) {
-        // ::todo: defaults should come from a factory
+
+        // From AppConfig =================================================================
         var domainMin = AppConfig.chart.domainMin;
         var domainMax = AppConfig.chart.domainMax;
         var domainCurrent = AppConfig.chart.domainCurrent;
 
         $scope.chartOpts = AppConfig.chart;
+        $scope.infos = AppConfig.infos;
 
+        // Density configuration =================================================================
         $scope.domain = { min: domainMin, max: domainMax, current: domainCurrent };
         $scope.densities = PdfFactory.pdfs;
         $scope.params = null;
