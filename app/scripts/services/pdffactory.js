@@ -26,6 +26,16 @@ angular.module('densitiesApp')
 			f: dgamma
 	  }
 
+	  // Beta
+	  pdfs.beta = {
+			name: 'Beta', 
+			params: [
+				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 0.1 }, 
+			 	{ name: 'Shape (β)', minValue: 0, maxValue: 100, value: 1, step: 0.1}
+			 ], 
+			domain: 20, 
+			f: dbeta
+	  }
     
   	return {
   		pdfs: pdfs
