@@ -24,6 +24,32 @@ describe('Service: PdfFactory', function () {
   it('should generate values for Gamma', function () {
     var pdfs = PdfFactory.pdfs;
 
+    // PDF Factory exists
+    expect(pdfs).not.toBeUndefined();
+
+    var xs = [1, 2, 3, 4, 5]
+      , ys = [0.30326533, 0.18393972, 0.11156508, 0.06766764, 0.04104250]
+      , shape = 1
+      , scale = 2;
+
+    // Create parameters
+    var params = [shape, scale]
+    var densities = pdfs.gamma.f(xs, params);
+
+    // Map densities onto truncated decimal
+    densities.map(function(x){ return toPrecision(x, 3); })
+    // Map ys onto truncated decimal
+    ys.map(function(x){ return toPrecision(x, 3); })
+
+    // Compare ys and densities
+    expect(toPrecision(densities[0], 3)).toEqual(toPrecision(ys[0], 3));
+    expect(toPrecision(densities[1], 3)).toEqual(toPrecision(ys[1], 3));
+    expect(toPrecision(densities[2], 3)).toEqual(toPrecision(ys[2], 3));
+  });
+
+  it('should generate values for Beta', function () {
+    var pdfs = PdfFactory.pdfs;
+
     expect(pdfs).not.toBeUndefined();
 
     var xs = [1, 2, 3, 4, 5]
