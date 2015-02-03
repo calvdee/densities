@@ -26,6 +26,8 @@ d3.custom.density = function module() {
             // scales
             var xys = _data;
 
+            console.log(xys)
+
             var xBounds = d3.extent(xys, function(xy) {return xy.x;}); 
             var yBounds = d3.extent(xys, function(xy) {return xy.y;}); 
             var xScale = d3.scale.linear().domain(xBounds).range([0, w]);

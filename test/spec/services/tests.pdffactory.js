@@ -35,8 +35,8 @@ describe('Service: PdfFactory', function () {
     var pdfs = PdfFactory.pdfs;
 
     var xs = [1, 2, 3, 4, 5]
-      , ys = [0.30326533, 0.18393972, 0.11156508, 0.06766764, 0.04104250]
-      , shape = 1
+      , ys = [0.1516327, 0.1839397, 0.1673476, 0.1353353, 0.1026062]
+      , shape = 2
       , scale = 2;
 
     // Create parameters

@@ -51,6 +51,7 @@ angular.module('densitiesApp')
 			// var f = function(x) { return Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape); }
 			var f = function(x) { return Math.pow(x, shape-1)*Math.exp(-x/scale)/Math.pow(scale, shape)*gamma(shape); }
 			var densities = compute(xs, f)
+			// console.log('damma computation: ' + densities)
 			return densities;
 		}
 
@@ -70,7 +71,7 @@ angular.module('densitiesApp')
 	  	
 	  	// Write chi-squred in terms of Gamma
 	  	var ys = dgamma(xs, [shape, scale]) 
-	  	console.log("*** dchisq calculation: " + ys)
+	  	// console.log("*** dchisq calculation: " + ys)
 	  	return ys
 	  }
     
