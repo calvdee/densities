@@ -74,6 +74,23 @@ angular.module('densitiesApp')
 	  	// console.log("*** dchisq calculation: " + ys)
 	  	return ys
 	  }
+
+	  // Exponential ================================================================================================
+	  pdfs.exp = {
+			name: 'Exponential', 
+			params: [
+				{ name: 'Lambda (λ)', minValue: 0, maxValue: 20, value: 1, step: 0.5 }, 
+			 ], 
+			f: dexp,
+			support: [0, 20]
+	  }
+	  function dexp (xs, params) {
+	  	var lambda = params[0]
+	  	var f = function(x) { return lambda*Math.exp(-lambda*x); }
+	  	var ys = compute(xs, f)
+	  	// console.log("*** dexp calculation: " + ys)
+	  	return ys
+	  }
     
   	return {
   		pdfs: pdfs
