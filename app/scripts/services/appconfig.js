@@ -20,7 +20,7 @@ angular.module('densitiesApp')
       top: 40, 
       right: 20, 
       bottom: 20, 
-      left: 30,
+      left: 50,
 			width: 970, 
 			height: 500,
 			domainMin: 0,

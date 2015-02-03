@@ -16,7 +16,8 @@ angular.module('densitiesApp')
         scope:{
             data: '=data',
             hovered: '&hovered',
-            opts: '=opts'
+            opts: '=opts',
+            density: '&density'
         },
         link: function(scope, element, attrs) {
 

@@ -6,15 +6,20 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('densitiesApp'));
 
   var MainCtrl,
-    scope;
+    scope,
+    d3,
+    PdfFactory;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _PdfFactory_, ___) {
+  beforeEach(inject(function ($controller, $rootScope, _AppConfig_, _PdfFactory_, _d3_) {
+    d3 = _d3_;
+    PdfFactory = _PdfFactory_;
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope,
+      AppConfig: _AppConfig_,
       PdfFactory: _PdfFactory_,
-      _: ___
+      d3: _d3_
     });
   }));
 
@@ -34,10 +39,17 @@ describe('Controller: MainCtrl', function () {
     expect(scope.hasParams()).toBe(true);
   });
 
-  it('should have domain [0,20]', function () {
-    expect(scope.domain.min).toEqual(0);
-    expect(scope.domain.max).toEqual(100);
+  it('should calculate XYs for xs and ys', function () {
+    // Setup the pdf factory and toXy function
+    var pdfs = PdfFactory.pdfs
+    // Create domain/range
+    var domain = d3.range(0, 20, 0.01)
+    var range = pdfs.chisq.f(domain, [1])
+    // Get the xys
+    var xys = scope.toXy(domain, range)
+    expect(xys.length).toBeGreaterThan(0)
   });
+
 
   it('should generate density values for an interval', function () {
     // expect(scope.generateDensityValues)

@@ -26,8 +26,8 @@ d3.custom.density = function module() {
             // scales
             var xys = _data;
 
-            var xBounds = d3.extent(xys, function(xy) {return xy.x;}); //console.log(xBounds);
-            var yBounds = d3.extent(xys, function(xy) {return xy.y;}); //console.log(yBounds);
+            var xBounds = d3.extent(xys, function(xy) {return xy.x;}); 
+            var yBounds = d3.extent(xys, function(xy) {return xy.y;}); 
             var xScale = d3.scale.linear().domain(xBounds).range([0, w]);
             var yScale = d3.scale.linear().domain(yBounds).range([h, 0]);
 
@@ -47,7 +47,7 @@ d3.custom.density = function module() {
 
             // create the chart
             if(!svg) { 
-                // console.log(this)
+                // 
                 svg = d3.select(this)
                     .append("svg:svg")
                       .attr("width", w + m[1] + m[3])
@@ -86,8 +86,8 @@ d3.custom.density = function module() {
             
             svg.selectAll("path.line")
                 .transition()
-                .duration(1500)
-                .ease(ease)
+                .duration(1000)
+                .ease("ease-in-back")
                 .attr("d", line(xys));
 
             svg.select(".y")
@@ -96,6 +96,13 @@ d3.custom.density = function module() {
                 .duration(1500)
                 .ease("sin-in-out")
                 .call(yAxis);
+
+            svg.select(".x")
+                .filter(".axis")
+                .transition()
+                .duration(1500)
+                .ease("sin-in-out")
+                .call(xAxis);
             
             // svg.transition().duration(duration).attr({width: width, height: height})
             // svg.select('.container-group')

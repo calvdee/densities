@@ -13,34 +13,30 @@
 angular.module('densitiesApp')
   .service('PdfFactory', function PdfFactory(_) {
     
+
+	  
+	  // Compute a function f over the domain
+	  function compute(xs, f) {
+	  	var ys = [];
+	  	xs.forEach(function(x) {
+	  		var y = f(x);
+	  		ys.push(y);
+	  	});
+	  	return ys;
+	  }
+	  
   	var pdfs = {};
 
-	  // Gamma
+	  // Gamma ================================================================================================
 	  pdfs.gamma = {
 			name: 'Gamma', 
 			params: [
 				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 2.0 }, 
 			 	{ name: 'Scale (β)', minValue: 0, maxValue: 100, value: 2, step: 0.25}
 			 ], 
-			domain: 20, 
-			f: dgamma
+			f: dgamma,
+			support: [0, 20]
 	  }
-
-	  // Beta
-	  pdfs.beta = {
-			name: 'Beta', 
-			params: [
-				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 0.1 }, 
-			 	{ name: 'Shape (β)', minValue: 0, maxValue: 100, value: 1, step: 0.1}
-			 ], 
-			domain: 20, 
-			f: dbeta
-	  }
-    
-  	return {
-  		pdfs: pdfs
-  	};
-
 		// Generates values using the gamma function defined as (n-1)!
 		function gamma(x) {
 		    var g = 1;
@@ -48,38 +44,38 @@ angular.module('densitiesApp')
 		    	g = g * i;
 		    return g;
 		}
-
-		// Generates values using the beta function defined as (x-1)!(y-1)!/(x + y - 1)!
-		function beta (x, y) {
-			// Write the function in terms of gamma
-			var b = gamma(x) + gamma(y) / gamma(x + y)
-			return b;
-		}
-
-		// Compute a function f over the domain
-		function compute(xs, f) {
-			var ys = [];
-			xs.forEach(function(x) {
-				var y = f(x);
-				ys.push(y);
-			});
-			return ys;
-		}
-
 		// Generates density values for the Gamma distribution over the interval [a,b]
 		function dgamma(xs, params) { 
 			var shape = params[0];
 			var scale = params[1];
-			var f = function(x) { return Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape); }
+			// var f = function(x) { return Math.pow(1/scale, shape)*Math.pow(x, shape-1)*Math.exp(-x*1/scale)/gamma(shape); }
+			var f = function(x) { return Math.pow(x, shape-1)*Math.exp(-x/scale)/Math.pow(scale, shape)*gamma(shape); }
 			var densities = compute(xs, f)
 			return densities;
 		}
 
-		function dbeta(xs, params) {
-			var a = params[0]
-				, b = params[1]
-				, f = function(x) { return Math.pow(x, a-1) * Math.pow(1-x, b-1)/beta(a,b); }
+	  // Chi-Square ================================================================================================
+	  pdfs.chisq = {
+			name: 'Chi-Squared', 
+			params: [
+				{ name: 'Degrees of Freedom (n)', minValue: 2, maxValue: 20, value: 2, step: 1.0 }, 
+			 ], 
+			f: dchisq,
+			support: [0, 20]
+	  }
+	  function dchisq (xs, params) {
+	  	var k = params[0]
+	  		, scale = 2
+	  		, shape = k/2
+	  	
+	  	// Write chi-squred in terms of Gamma
+	  	var ys = dgamma(xs, [shape, scale]) 
+	  	console.log("*** dchisq calculation: " + ys)
+	  	return ys
+	  }
+    
+  	return {
+  		pdfs: pdfs
+  	};
 
-			var densities = compute(xs, f)
-		}
   });
