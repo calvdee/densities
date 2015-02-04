@@ -31,11 +31,12 @@ angular.module('densitiesApp')
 	  pdfs.gamma = {
 			name: 'Gamma', 
 			params: [
-				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 2.0 }, 
-			 	{ name: 'Scale (β)', minValue: 0, maxValue: 100, value: 2, step: 0.25}
+				{ name: 'Shape (α)', minValue: 1, maxValue: 100, value: 1, step: 2.0, wiki: "http://en.wikipedia.org/wiki/Gamma_distribution#Characterization_using_shape_k_and_scale_.CE.B8" }, 
+			 	{ name: 'Scale (β)', minValue: 0, maxValue: 100, value: 2, step: 0.25, wiki: "http://en.wikipedia.org/wiki/Gamma_distribution#Characterization_using_shape_k_and_scale_.CE.B8"}
 			 ], 
 			f: dgamma,
-			support: [0, 20]
+			support: [0, 20],
+			wiki: "http://en.wikipedia.org/wiki/Gamma_distribution#mw-content-text"
 	  }
 		// Generates values using the gamma function defined as (n-1)!
 		function gamma(x) {
@@ -59,10 +60,11 @@ angular.module('densitiesApp')
 	  pdfs.chisq = {
 			name: 'Chi-Squared', 
 			params: [
-				{ name: 'Degrees of Freedom (k)', minValue: 2, maxValue: 20, value: 2, step: 1.0 }, 
+				{ name: 'df (k)', minValue: 2, maxValue: 20, value: 2, step: 1.0, wiki: "http://en.wikipedia.org/wiki/Degrees_of_freedom_(statistics)#mw-content-text" }, 
 			 ], 
 			f: dchisq,
-			support: [0, 20]
+			support: [0, 20],
+			wiki: "http://en.wikipedia.org/wiki/Chi-squared_distribution#mw-body-content"
 	  }
 	  function dchisq (xs, params) {
 	  	var k = params[0]	
@@ -79,10 +81,11 @@ angular.module('densitiesApp')
 	  pdfs.exp = {
 			name: 'Exponential', 
 			params: [
-				{ name: 'Lambda (λ)', minValue: 0, maxValue: 20, value: 1, step: 0.5 }, 
+				{ name: 'Lambda (λ)', minValue: 0, maxValue: 20, value: 1, step: 0.5, wiki: "http://en.wikipedia.org/wiki/Exponential_distribution#Characterization" }, 
 			 ], 
 			f: dexp,
-			support: [0, 20]
+			support: [0, 20],
+			wiki: "http://en.wikipedia.org/wiki/Exponential_distribution#mw-content-text"
 	  }
 	  function dexp (xs, params) {
 	  	var lambda = params[0]

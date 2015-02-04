@@ -29,6 +29,7 @@ angular.module('densitiesApp')
         * false otherwise.
         */ 
         $scope.hasDensity = function () {
+            console.log($scope.density)
             return $scope.density !== null;
         }
 
