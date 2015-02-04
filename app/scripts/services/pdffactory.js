@@ -59,13 +59,13 @@ angular.module('densitiesApp')
 	  pdfs.chisq = {
 			name: 'Chi-Squared', 
 			params: [
-				{ name: 'Degrees of Freedom (n)', minValue: 2, maxValue: 20, value: 2, step: 1.0 }, 
+				{ name: 'Degrees of Freedom (k)', minValue: 2, maxValue: 20, value: 2, step: 1.0 }, 
 			 ], 
 			f: dchisq,
 			support: [0, 20]
 	  }
 	  function dchisq (xs, params) {
-	  	var k = params[0]
+	  	var k = params[0]	
 	  		, scale = 2
 	  		, shape = k/2
 	  	

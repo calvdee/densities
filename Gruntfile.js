@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         },
         heroku: {
             options: {
-                remote: 'git@heroku.com:densities-app.git',
+                remote: 'git@heroku.com:density-fns.git',
                 branch: 'master'
             }
         }
