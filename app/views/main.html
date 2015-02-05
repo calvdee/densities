@@ -4,48 +4,64 @@
 <div class="row bordered">
   <div class="col-md-12">
 
-    <!-- Row 1 -->
+    <!-- Instructions -->
     <div class="row">
-      <form class="form-horizontal">
-        <!-- Density list -->
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="density-dropdown">Density</label>
-          <div class="col-sm-2">
-            <div class="dropdown">
-              <button class="btn btn-default" type="button" id="density-dropdown" data-toggle="dropdown" aria-expanded="true">
-                <span ng-show="!hasDensity()">Choose a density</span>
-                <span ng-show="hasDensity()">{{density.name}}</span>
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="density-dropdown">
-                <li role="presentation" ng-repeat="d in densities" ng-click="onDensity(d)">
-                  <a role="menuitem" tabindex="-1">{{d.name}}</a>
-                </li>
-              </ul>
-              <a ng-href="{{density.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a>
+      <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>How do I use this?</strong>
+        Select a <a href="http://en.wikipedia.org/wiki/Probability_density_function#mw-content-text" target="_blank">density function</a> from the dropdown and click inside one of the parameter boxes then experiment with pressing or holding the up/down arrows on your keyboard.  This will cause the density function to be recomputed with the new parameter setting(s), creating a transition that brings the density function to life!
+        <br /><br />
+        <strong>What are the <i class="fa fa-info-circle"></i> icons for?</strong>
+        They are links to Wikipedia which describe the selected density function and their parameters.
+        <br /><br />
+        <strong>How can I close this notification?</strong>
+        By clicking 'x' in the upper right corner
+      </div>
+    </div>
+    <!-- Density -->
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form-horizontal">
+          <!-- Density list -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="density-dropdown">Density</label>
+            <div class="col-sm-2">
+              <div class="dropdown">
+                <button class="btn btn-default" type="button" id="density-dropdown" data-toggle="dropdown" aria-expanded="true">
+                  <span ng-show="!hasDensity()">Choose a density</span>
+                  <span ng-show="hasDensity()">{{density.name}}</span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="density-dropdown">
+                  <li role="presentation" ng-repeat="d in densities" ng-click="onDensity(d)">
+                    <a role="menuitem" tabindex="-1">{{d.name}}</a>
+                  </li>
+                </ul>
+                <a ng-href="{{density.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Domain -->
-        <div class="form-group animate-hide" ng-show="hasDensity()">
+          <!-- Domain -->
+          <div class="form-group animate-hide" ng-show="hasDensity()">
 
-        </div>
-        <!-- Parameters -->
-        <div class="form-group animate-hide" ng-show="hasDensity()">
-          <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
-          <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
-            <input class="form-control" 
-                   type="number" 
-                   ng-model="p.value" 
-                   min="{{p.minValue}}" 
-                   max="{{p.maxValue}}" 
-                   value="{{p.value}}"
-                   step="{{p.step}}"
-                   ng-change="computeChart()"/>
-            <p class="text-right">{{p.name}}: {{p.value}}&nbsp;<a ng-href="{{p.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a></p>
           </div>
-        </div>
-      </form>
+          <!-- Parameters -->
+          <div class="form-group animate-hide" ng-show="hasDensity()">
+            <label class="col-sm-2 control-label" for="density-dropdown">Parameters</label>
+            <div id="{{p.name}}" class="col-md-2" ng-repeat="p in density.params">
+              <input class="form-control" 
+                     type="number" 
+                     ng-model="p.value" 
+                     min="{{p.minValue}}" 
+                     max="{{p.maxValue}}" 
+                     value="{{p.value}}"
+                     step="{{p.step}}"
+                     ng-change="computeChart()"/>
+              <p class="text-right">{{p.name}}: {{p.value}}&nbsp;<a ng-href="{{p.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a></p>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- Row 2 -->

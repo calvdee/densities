@@ -82,8 +82,12 @@ body {
   border: 1px solid;
 }*/
 
+/* Borders ================================== */
 .border-blue {
   border: 1px solid blue;
+}
+.border-red {
+  border: 1px solid red;
 }
 
 /* Chart ================================== */

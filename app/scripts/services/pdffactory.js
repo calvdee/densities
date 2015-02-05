@@ -64,7 +64,7 @@ angular.module('densitiesApp')
 			 ], 
 			f: dchisq,
 			support: [0, 20],
-			wiki: "http://en.wikipedia.org/wiki/Chi-squared_distribution#mw-body-content"
+			wiki: "http://en.wikipedia.org/wiki/Chi-squared_distribution#mw-content-text"
 	  }
 	  function dchisq (xs, params) {
 	  	var k = params[0]	
