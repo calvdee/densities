@@ -8,7 +8,7 @@
  * Controller of the densitiesApp
  */
 angular.module('densitiesApp')
-  .controller('MainCtrl', function ($scope, AppConfig, PdfFactory, d3) {
+  .controller('MainCtrl', function ($scope, AppConfig, PdfFactory, d3, $analytics) {
 
         // From AppConfig =================================================================
         var domainMin = 0
@@ -29,7 +29,6 @@ angular.module('densitiesApp')
         * false otherwise.
         */ 
         $scope.hasDensity = function () {
-            console.log($scope.density)
             return $scope.density !== null;
         }
 
@@ -51,6 +50,16 @@ angular.module('densitiesApp')
 
             // Only swap densities if there's been a new density selected
             if(newDensity !== oldDensity){
+
+                if(oldDensity !== null) {
+                    // Send an interaction for the first density selected
+                    $analytics.eventTrack('interaction.densities', {  category: 'densities.first', label: newDensity.name });
+                } else {
+                    // Send an interaction for a new density
+                    $analytics.eventTrack('interaction.densities', {  category: 'densities.change', label: newDensity.name });
+                }
+
+                // Assign the new density to the scope
                 $scope.density = newDensity;
 
                 // Immediately compute the chart

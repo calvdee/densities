@@ -7,7 +7,7 @@
     <!-- Instructions -->
     <div class="row">
       <div class="alert alert-info alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" analytics-on="click" analytics-event="infoClose"><span aria-hidden="true">&times;</span></button>
         <strong>How do I use this?</strong>
         Select a <a href="http://en.wikipedia.org/wiki/Probability_density_function#mw-content-text" target="_blank">density function</a> from the dropdown and click inside one of the parameter boxes then experiment with pressing or holding the up/down arrows on your keyboard.  This will cause the density function to be recomputed with the new parameter setting(s), creating a transition that brings the density function to life!
         <br /><br />
@@ -37,7 +37,7 @@
                     <a role="menuitem" tabindex="-1">{{d.name}}</a>
                   </li>
                 </ul>
-                <a ng-href="{{density.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a>
+                <a ng-href="{{density.wiki}}" target="_blank" ng-show="hasDensity()" analytics-on="click" analytics-event="interactions.wiki" analytics-category="densities" analytics-label="{{density.name}}"><i class="fa fa-info-circle"></i></a>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@
                      value="{{p.value}}"
                      step="{{p.step}}"
                      ng-change="computeChart()"/>
-              <p class="text-right">{{p.name}}: {{p.value}}&nbsp;<a ng-href="{{p.wiki}}" target="_blank" ng-show="hasDensity()"><i class="fa fa-info-circle"></i></a></p>
+              <p class="text-right">{{p.name}}: {{p.value}}&nbsp;<a ng-href="{{p.wiki}}" target="_blank" ng-show="hasDensity()" analytics-on="click" analytics-event="interactions.wiki" analytics-category="parameters" analytics-label="{{p.name}}"><i class="fa fa-info-circle"></i></a></p>
             </div>
           </div>
         </form>

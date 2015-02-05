@@ -32,6 +32,8 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-ui-slider/src/slider.js',
       'bower_components/d3/d3.js',
+      'bower_components/angulartics/src/angulartics.js',
+      'bower_components/angulartics/src/angulartics-ga.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'

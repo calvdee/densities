@@ -18,7 +18,9 @@ angular
     'ngTouch',
     'underscore',
     'ui.bootstrap',
-    'ui.slider'
+    'ui.slider',
+    'angulartics', 
+    'angulartics.google.analytics'
   ])
   .config(function ($routeProvider) {
     $routeProvider
